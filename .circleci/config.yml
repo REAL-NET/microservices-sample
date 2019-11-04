@@ -58,8 +58,8 @@ commands:
           command: |
             REGISTRY_HTTP_RELATIVEURLS=true
             docker login docker.pkg.github.com -u "$GITHUB_USERNAME" -p "$GITHUB_PUBLISH_TOKEN"
-            docker tag << parameters.image_name >> docker.pkg.github.com/$GITHUB_ORG/$REPOSITORY/<< parameters.image_name >>:latest
-            docker push docker.pkg.github.com/$GITHUB_ORG/$REPOSITORY/<< parameters.image_name >>:latest
+            docker tag << parameters.image_name >> docker.pkg.github.com/$GITHUB_ORG/$REPOSITORY/<< parameters.image_name >>:$CIRCLE_BRANCH
+            docker push docker.pkg.github.com/$GITHUB_ORG/$REPOSITORY/<< parameters.image_name >>:$CIRCLE_BRANCH
 jobs: 
   build-hello:
     executor: docker-publisher
